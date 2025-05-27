@@ -1,0 +1,12 @@
+# 機密情報
+.env
+
+# Pythonのキャッシュ
+__pycache__/
+*.pyc
+
+# OSごとの不要ファイル
+.DS_Store
+
+# エディタごとの設定
+.vscode/
