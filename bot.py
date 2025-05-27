@@ -1,13 +1,14 @@
-# bot.py の先頭あたりに以下を追加
+# bot.py
+
 from keep_alive import keep_alive
+keep_alive()
 
-keep_alive()  # ダミーWebサーバーを起動する
-
-# 以下はそのまま
 import discord
 import os
 
 intents = discord.Intents.default()
+intents.message_content = True  # ✅ ←これを追加！
+
 client = discord.Client(intents=intents)
 
 @client.event
@@ -16,6 +17,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    if message.author == client.user:
+        return
+
     if message.content == "ping":
         await message.channel.send("pong!")
 
