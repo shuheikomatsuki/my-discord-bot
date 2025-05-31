@@ -7,7 +7,7 @@ import discord
 import os
 
 intents = discord.Intents.default()
-intents.message_content = True  # ✅ ←これを追加！
+intents.message_content = True
 
 client = discord.Client(intents=intents)
 
@@ -22,6 +22,9 @@ async def on_message(message):
 
     if message.content == "ping":
         await message.channel.send("pong!")
+
+    if "おめでとう" in message.content:
+        await message.channel.send("おめでとう！！")
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 client.run(TOKEN)
